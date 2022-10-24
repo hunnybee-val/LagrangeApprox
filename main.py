@@ -3,11 +3,11 @@
 # 17 вариант
 
 import numpy as np
-import lagrange
+import lagrange as l
 
 
 # основная часть программы
 
 print("Полином Лагранжа вычисляется по следующей формуле: ")
 print("sum[n,k=1]( f(x_k) * l_k(x)), где l_x(x) = mult[n,j=1]( (x-x_j) / (x_k-x_j) )")
-print(lagrange(5))
+print(l.lagrange(5, 0.095*np.pi, 0, (2*np.pi)/3))
