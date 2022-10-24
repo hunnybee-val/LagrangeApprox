@@ -21,19 +21,7 @@ def lagrange(n, point, a, b):
         value += funct(x[i]) * l[i]
     return value
 
-    # """
-    # n = len(x)
-    # if y is None:
-    #     y = np.zeros(n)
-    #     for i in range(n):
-    #         y[i] = self.func(x[i])
-    # interp = 0
-    # l = np.zeros(n)
-    # for i in range(n):
-    #     l[i] = 1
-    #     for k in range(n):
-    #         if k != i:
-    #             l[i] *= (approx - x[k]) / (x[i] - x[k])
-    #     interp += y[i] * l[i]
-    # return interp
-    # """
+
+def mape(actual, pred):
+    actual, pred = np.array(actual), np.array(pred)
+    return np.mean(np.abs((actual - pred) / actual)) * 100
