@@ -22,7 +22,7 @@ elif select == 2:
     x = 0.18*np.pi
 elif select == 3:
     x = 0.42*np.pi
-lagrangeres = p.lagrange(5, x, a, b)
+lagrangeres = p.lagrange(5, x, a, b, 1)
 calculated = 2 * np.exp(np.cbrt(x / 3) * np.cos(4 * x))
 newton_form = p.newton_poly(x, 5, a, b)
 print("Результат интерполирования: ", lagrangeres)
