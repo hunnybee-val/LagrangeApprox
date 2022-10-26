@@ -1,7 +1,10 @@
 import tkinter as tk
-import numpy as np
 from tkinter import *
+
+import numpy as np
+
 import lagrange as p
+
 
 def valueLagrange():
     a = 0
@@ -24,6 +27,13 @@ def valueNewton():
     lbl_result["text"] = f"\nN_5({var.get()}pi) = {value_newton} \n"
     lbl_calc_res["text"] = f"Результат прямого вычисления: {p.funct(var.get() * np.pi)}\n" \
                            f"Оценка приближения: {np.abs(p.funct(var.get() * np.pi) - value_newton)}\n"
+
+def valueHermite():
+    x = var.get() * np.pi
+    value_hermite = p.hermite(x,5)
+    lbl_result["text"] = f"\nH_5({var.get()}pi) = {value_hermite} \n"
+    lbl_calc_res["text"] = f"Результат прямого вычисления: {p.funct(var.get() * np.pi)}\n" \
+                           f"Оценка приближения: {np.abs(p.funct(var.get() * np.pi) - value_hermite)}\n"
 
 root = tk.Tk()
 root.title("Контрольная по численным методам 05-005")
@@ -62,6 +72,11 @@ btn_convert2 = tk.Button(
     text="Ньютон",
     command=valueNewton
 )
+btn_convert3 = tk.Button(
+    master=root,
+    text="Эрмит-Фейер",
+    command=valueHermite
+)
 
 lbl_calc_res = tk.Label(master=root)
 lbl_result = tk.Label(master=root)
@@ -70,6 +85,7 @@ lbl_result = tk.Label(master=root)
 label = Label(root)
 btn_convert1.pack()
 btn_convert2.pack()
+btn_convert3.pack()
 lbl_result.pack()
 lbl_calc_res.pack()
 label.pack()

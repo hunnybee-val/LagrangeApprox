@@ -5,11 +5,15 @@ def funct(x):
     func17 = 2 * np.exp(np.cbrt(x / 3) * np.cos(4 * x))
     return func17
 
+#первый способ задания точек
+
 def x_data1(a, b, n):
     x = np.zeros(n)
     for i in range(n):
         x[i] = a + i * ((b - a) / 4)
     return x
+
+#второй способ задания точек
 
 def x_data2(a, b, n):
     x = np.zeros(n+1)
@@ -19,9 +23,9 @@ def x_data2(a, b, n):
 
 # интерполяционный полином Лагранжа
 
-def lagrange(n, point, a, b, whichdata):
+def lagrange(n, point, a, b, oneortwo):
     value = 0
-    if whichdata == 1:
+    if oneortwo == 1:
         x = x_data1(a, b, n)
     else:
         x = x_data2(a, b, n)
@@ -60,3 +64,17 @@ def newton_poly(x, n, a, b):
         p = coef[n - k] + (x - x_points[n - k]) * p
     return p
 
+#Интерполяционный полином в форме Эрмита-Фейера
+
+def hermite(x,n):
+    if n==0:
+        return 1
+    elif n==1:
+        return 2*x
+    else:
+        return 2*x*hermite(x,n-1)-2*(n-1)*hermite(x,n-2)
+
+# n=5
+# for i in range (n):
+#     print("переменная: ", x_data1(0,2 * np.pi / 3,5)[i])
+#     print("значение: ", funct(x_data1(0, 2 * np.pi / 3, 5)[i]))
